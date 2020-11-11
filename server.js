@@ -22,8 +22,6 @@ mongoose
 .catch(err => console.log(err))
 
 
-
-
 //Passport Middleware
 app.use(passport.initialize());
 //Passport Config
