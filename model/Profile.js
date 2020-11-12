@@ -105,7 +105,7 @@ const profileSchema = new Schema({
             
         }
     ],
-    sociial:{
+    social:{
         youtube:{
             type:String,
         },
