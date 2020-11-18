@@ -87,7 +87,7 @@ Profile.findOne({handle:req.params.handle})
 //@access  public
 router.get('/user/:user_id', (req,res)=>{
     const errors={};
-Profile.findOne({handle:req.params.user_id})
+Profile.findOne({user:req.params.user_id})
 .populate('user', ['name', 'avatar'])
 .then(profile => {
     if(!profile){
@@ -184,6 +184,7 @@ Profile.findOne({user:req.user.id})
         profile.experience.unshift(newExp);
         profile.save().then(profile => res.json(profile))
     })
+    .catch(err => res.json(err));
 });
 //@route   post /api/profile/education
 //@desc    Add education to profile

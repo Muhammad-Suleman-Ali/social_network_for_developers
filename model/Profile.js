@@ -42,17 +42,14 @@ const profileSchema = new Schema({
                 type:String,
                 require:true
             },
-            copmany:{
+            company:{
                 type:String,
                 required:true
             },
             location:{
                 type:String
             },
-            copmany:{
-                type:String,
-                required:true
-            },
+        
             from:{
                 type:Date,
                 required:true
@@ -84,7 +81,7 @@ const profileSchema = new Schema({
                 type:String,
                 required:true
             },
-            copmany:{
+            company:{
                 type:String,
                 required:true
             },

@@ -56,7 +56,7 @@ if(!isValid){
         text:req.body.text,
         name:req.body.name,
         avatar:req.body.avatar,
-        user:req.body.id
+        user:req.user.id
 
     })
     newPost.save().then(post => res.json(post));
@@ -70,6 +70,8 @@ router.delete('/:id',passport.authenticate('jwt',{session:false}), (req,res)=>{
         Post.findById(req.params.id)
         .then(post => {
             //check for post owner
+            console.log(post.user)
+           
             if(post.user.toString() !== req.user.id){
                 return res.status(401).json({NotAuthorized:"User not authorized"})
             }
@@ -100,7 +102,7 @@ router.post('/like/:id',passport.authenticate('jwt',{session:false}), (req,res)=
 //@route POST api/posts/unlike/:id
 //@desc  unlike post 
 //@access private
-router.post('/like/:id',passport.authenticate('jwt',{session:false}), (req,res)=>{
+router.post('/unlike/:id',passport.authenticate('jwt',{session:false}), (req,res)=>{
     Profile.findOne({user:req.user.id})
     .then(profile=> {
         Post.findById(req.params.id)
@@ -110,7 +112,7 @@ router.post('/like/:id',passport.authenticate('jwt',{session:false}), (req,res)=
             }
             // Get remove index
             const removeIndex = post.likes
-                .map(item => item.user.toString)
+              .map(item => item.user.toString)
                 .indexOf(req.user.id)
 
             //splice out of array 
