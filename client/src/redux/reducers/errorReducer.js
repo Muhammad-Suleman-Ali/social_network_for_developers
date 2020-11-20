@@ -1,5 +1,6 @@
-const initialState ={};
 import { GET_ERRORS } from "../actions/types"
+const initialState ={};
+
 
 const errorReducer = (state=initialState,action)=> {
     switch(action.type){
@@ -9,6 +10,5 @@ const errorReducer = (state=initialState,action)=> {
             default : 
             return state;
     }
-
 }
 export default errorReducer;
