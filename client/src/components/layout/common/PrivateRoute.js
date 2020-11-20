@@ -14,7 +14,7 @@ import {connect} from "react-redux"
                 )
  } />
  );
-const  mapStateToProps = ()=>({
+const  mapStateToProps = (state)=>({
     auth:state.auth
 })
 export default connect(mapStateToProps,null)(PrivateRoute);
