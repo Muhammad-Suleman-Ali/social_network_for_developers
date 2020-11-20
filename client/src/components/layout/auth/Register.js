@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classnames from "classnames";
 import { connect } from "react-redux";
 import {registerUser} from '../../../redux/actions/authActions'
 import {withRouter  } from "react-router-dom"
@@ -25,7 +24,8 @@ class Register extends Component {
     static getDerivedStateFromProps(nextProps){
       if(nextProps.errors){
         return{
-          errors:nextProps.errors}
+          errors:nextProps.errors
+        }
       }};
 
     onChange =(e)=>  {
