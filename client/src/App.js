@@ -11,6 +11,7 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken'
 import {logoutUser, setCurrentUser} from  './redux/actions/authActions';
 import CreateProfile from './components/layout/create-profile/CreateProfile'
+import EditProfile from './components/edit-profile/EditProfile';
 
 
 import PrivateRoute from './components/layout/common/PrivateRoute'
@@ -65,6 +66,10 @@ function App() {
      </Switch>
      <Switch>
      <PrivateRoute exact path='/create-profile' component={CreateProfile} />
+
+     </Switch>
+     <Switch>
+     <PrivateRoute exact path='/edit-profile' component={EditProfile} />
 
      </Switch>
       </div>
