@@ -12,6 +12,7 @@ import setAuthToken from './utils/setAuthToken'
 import {logoutUser, setCurrentUser} from  './redux/actions/authActions';
 import CreateProfile from './components/layout/create-profile/CreateProfile'
 import EditProfile from './components/edit-profile/EditProfile';
+import AddExperience from './components/add-credentials/AddExperience';
 
 
 import PrivateRoute from './components/layout/common/PrivateRoute'
@@ -70,6 +71,10 @@ function App() {
      </Switch>
      <Switch>
      <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+
+     </Switch>
+     <Switch>
+     <PrivateRoute exact path='/add-experience' component={AddExperience} />
 
      </Switch>
       </div>
