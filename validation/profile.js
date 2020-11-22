@@ -19,22 +19,13 @@ module.exports= function validateProfileInput(data){
     if(validator.isEmpty(data.skills)){
         errors.skills="Skills field is required ";
     }
-    if(data.from){
-        if(!validator.isDate(data.from)){
-            errors.from="Date is not valid ";
-        }
-    }
     
     if(!isEmpty(data.website)){
         if(!validator.isURL(data.website)){
             errors.website="Not a valid website";
         }
     }
-    if(!isEmpty(data.website)){
-        if(!validator.isURL(data.website)){
-            errors.website="Not a valid URL";
-        }
-    }
+   
     if(!isEmpty(data.youtube)){
         if(!validator.isURL(data.youtube)){
             errors.youtube="Not a valid URL";
@@ -60,12 +51,6 @@ module.exports= function validateProfileInput(data){
             errors.twitter="Not a valid URL";
         }
     }
-
-
-
-
-
-
     return {
         errors,
         isValid : isEmpty(errors)

@@ -176,19 +176,19 @@ router.post('/experience', passport.authenticate('jwt',{session:false}), (req, r
 Profile.findOne({user:req.user.id})
     .then(profile => {
         const newExp ={
-            title:req.body.title,
-            company:req.body.company,
-            location:req.body.location,
-            from : req.body.from,
-            to:req.body.to,
-            current:req.body.current,
-            description:req.body.description
+            title:       req.body.title,
+            company:     req.body.company,
+            location:    req.body.location,
+            from :       req.body.from,
+            to:          req.body.to,
+            current:     req.body.current,
+            description: req.body.description
         }
         // Add to experience array
         profile.experience.unshift(newExp);
         profile.save().then(profile => res.json(profile))
-    })
-    .catch(err => res.json(err));
+    });
+    
 });
 //@route   post /api/profile/education
 //@desc    Add education to profile
@@ -211,7 +211,7 @@ Profile.findOne({user:req.user.id})
             current:req.body.current,
             description:req.body.description
         }
-        // Add to experience array
+        // Add to education array
         profile.education.unshift(newEdu);
         profile.save().then(profile => res.json(profile))
     })

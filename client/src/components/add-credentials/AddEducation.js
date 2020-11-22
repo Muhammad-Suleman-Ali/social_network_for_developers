@@ -35,7 +35,6 @@ if(nextProps.errors){
             school:this.state.school,
             degree:this.state.degree,
             fieldofstudy:this.state.fieldofstudy,
-           
             from :this.state.from,
             to:this.state.to,
             current:this.state.current,
@@ -45,7 +44,7 @@ if(nextProps.errors){
         this.props.addEducation(eduData,this.props.history);
     };
     onChange=(e)=>{
-        e.preventDefault();
+        
     this.setState({[e.target.name]:e.target.value})
     };
     onCheck=(e)=>{
@@ -98,7 +97,7 @@ if(nextProps.errors){
                                  error ={errors.from}
                                />
                                <h6>To Date</h6>
-                               <TextfieldGroup 
+                    <TextfieldGroup 
                                type="date"
                                  name="to"
                                  value={this.state.to}
