@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {Link,withRouter  } from "react-router-dom";
-import TextAreaFieldGroup from '../layout/common/TextAreaFieldGroup';
+import {withRouter  } from "react-router-dom";
 import TextfieldGroup from '../layout/common/TextfieldGroup';
-import {connect } from 'react-redux'
+import {connect } from 'react-redux';
+import {addExperience } from '../../redux/actions/profileActions';
 
 
 class AddExperience extends Component {
@@ -21,9 +21,27 @@ class AddExperience extends Component {
 
     }
     }
+
+static getDerivedStateFromProps(nextProps){
+if(nextProps.errors){
+ return{
+        errors:nextProps.errors
+}
+}
+}    
     onSubmit=(e)=>{
         e.preventDefault();
-        console.log('submitted')
+        const expData ={
+            company:this.state.company,
+            title:this.state.title,
+            location:this.state.location,
+            from :this.state.from,
+            to:this.state.to,
+            current:this.state.current,
+            descriptions:this.state.descriptions, 
+        };
+
+        this.props.addExperience(expData,this.props.history);
     }
     onChange=(e)=>{
         e.preventDefault();
@@ -115,4 +133,4 @@ const mapStateToProps = (state)=>({
     errors:state.errors
 })
 
-export default connect(mapStateToProps) (withRouter(AddExperience));
+export default connect(mapStateToProps,{addExperience }) (withRouter(AddExperience));

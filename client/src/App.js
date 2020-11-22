@@ -13,6 +13,8 @@ import {logoutUser, setCurrentUser} from  './redux/actions/authActions';
 import CreateProfile from './components/layout/create-profile/CreateProfile'
 import EditProfile from './components/edit-profile/EditProfile';
 import AddExperience from './components/add-credentials/AddExperience';
+import AddEducation from './components/add-credentials/AddEducation';
+
 
 
 import PrivateRoute from './components/layout/common/PrivateRoute'
@@ -45,12 +47,7 @@ if(localStorage.jwtToken){
     //redirect to login 
     window.location.href='/login';
   }
-
-
 }
-
-
-
 function App() {
   return (
     <Provider store={store}>
@@ -71,10 +68,14 @@ function App() {
      </Switch>
      <Switch>
      <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+     </Switch>
+     
+     <Switch>
+     <PrivateRoute exact path='/add-experience' component={AddExperience} />
 
      </Switch>
      <Switch>
-     <PrivateRoute exact path='/add-experience' component={AddExperience} />
+     <PrivateRoute exact path='/add-education' component={AddEducation} />
 
      </Switch>
       </div>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom"
-import TextfieldGroup from '../../components/layout/common/TextfieldGroup';
-import TextAreaFieldGroup from '../../components/layout/common/TextAreaFieldGroup';
-import SelectListGroup from '../../components/layout/common/SelectListGroup';
-import InputGroup from '../../components/layout/common/InputGroup';
-import {createProfile, getCurrentProfile} from '../../redux/actions/profileActions';
+import TextfieldGroup from '../layout/common/TextfieldGroup';
+import TextAreaFieldGroup from '../layout/common/TextAreaFieldGroup';
+import SelectListGroup from '../layout/common/SelectListGroup';
+import InputGroup from '../layout/common/InputGroup';
+import {createProfile,getCurrentProfile} from '../../redux/actions/profileActions';
 import isEmpty from '../../validation/is-empty';
 
 
@@ -35,55 +35,54 @@ import isEmpty from '../../validation/is-empty';
      }
      componentDidMount(){
          this.props.getCurrentProfile();
-
      }
-     static getDerivedStateFromProps(nextProps){
-
-        if(!nextProps.errors){
-
-            return{
+     componentWillReceiveProps(nextProps){
+        if(nextProps.errors){
+            this.setState({
                 errors:nextProps.errors
-            }
+            })
         }
-
         if(nextProps.profile.profile){
             const profile =nextProps.profile.profile;
-            // brings skills array to comma separated value 
 
-            const skillsCSV = profile.skills.join(',');
-            // if profilr field does noot exist , make empty strings 
-            profile.company = !isEmpty(profile.company) ? profile.company : ''; 
-            profile.website = !isEmpty(profile.website) ? profile.website : ''; 
-            profile.location = !isEmpty(profile.location) ? profile.location : ''; 
-            profile.githubusername = !isEmpty(profile.githubusername) ? profile.githubusername : ''; 
-            profile.bio = !isEmpty(profile.bio) ? profile.bio : ''; 
 
-            profile.social = !isEmpty(profile.social) ? profile.social : {};
+            //bring Skills array back to comma separated 
+            const skillsCSV  =  profile.skills.join(',');
 
-            profile.twitter = !isEmpty(profile.social.twitter) ? profile.social.twitter : '';
-            profile.facebook = !isEmpty(profile.social.facebook) ? profile.social.facebook : '';
-            profile.youtube = !isEmpty(profile.social.youtube) ? profile.social.youtube : '';
-            profile.linkedin = !isEmpty(profile.social.linkedin) ? profile.social.linkedin : '';
-            profile.instagram = !isEmpty(profile.social.instagram) ? profile.social.instagram : 
-            '';
-            // set component field state 
-            
-            return{
-               
-                handle: nextProps.profile.profile.handle,
-                company:profile.company,
-                website:profile.website,
-                location:profile.location,
-                status:profile.status,
-                skills:skillsCSV, 
-                githubusername:profile.githubusername,
-                bio:profile.bio,
-                twitter:profile.twitter,
-                facebook:profile.facebook,
-                linkedin:profile.linkedin,
-                instagram:profile.instagram,
-                youtube:profile.youtube,
-            }}
+            // if profile field does noot exist , make empty strings 
+        profile.company = !isEmpty(profile.company) ? profile.company : ''; 
+        profile.website = !isEmpty(profile.website) ? profile.website : ''; 
+        profile.location = !isEmpty(profile.location) ? profile.location : ''; 
+        profile.githubusername = !isEmpty(profile.githubusername) ? profile.githubusername : ''; 
+        profile.bio = !isEmpty(profile.bio) ? profile.bio : ''; 
+
+        profile.social = !isEmpty(profile.social) ? profile.social : {};
+
+        profile.twitter = !isEmpty(profile.social.twitter) ? profile.social.twitter : '';
+        profile.facebook = !isEmpty(profile.social.facebook) ? profile.social.facebook : '';
+        profile.youtube = !isEmpty(profile.social.youtube) ? profile.social.youtube : '';
+        profile.linkedin = !isEmpty(profile.social.linkedin) ? profile.social.linkedin : '';
+        profile.instagram = !isEmpty(profile.social.instagram) ? profile.social.instagram : '';
+        // set component field state 
+        this.setState({
+            handle: profile.handle,
+            company:profile.company,
+            website:profile.website,
+            location:profile.location,
+            status:profile.status,
+            skills:skillsCSV, 
+            githubusername:profile.githubusername,
+            bio:profile.bio,
+            twitter:profile.twitter,
+            facebook:profile.facebook,
+            linkedin:profile.linkedin,
+            instagram:profile.instagram,
+            youtube:profile.youtube,
+        })
+        }
+
+
+
      } 
      onSubmit =(e)=>{
          e.preventDefault();
@@ -102,9 +101,10 @@ import isEmpty from '../../validation/is-empty';
             instagram:this.state.instagram,
             youtube:this.state.youtube,
 
-        }
-        this.props.createProfile(profileData,this.props.history)
-     }
+        };
+        console.log(profileData)
+    this.props.createProfile(profileData,this.props.history)
+     };
      onChange= (e)=>{
         this.setState({[e.target.name]:e.target.value })
      }
@@ -186,8 +186,8 @@ import isEmpty from '../../validation/is-empty';
                 <div className='container'>
                     <div className='row'>
                         <div className='col-md-8 m-auto'>
-                        <h1 className='display-4 text-center '>Edit your Profile</h1>
-                        
+                        <h1 className='display-4 text-center '>Edit Profile</h1>
+                         
                          <small className='d-block pb-3'> * = required fields </small>
                          <form onSubmit={this.onSubmit}>
                              <TextfieldGroup 

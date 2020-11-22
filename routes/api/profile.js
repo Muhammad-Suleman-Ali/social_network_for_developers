@@ -113,11 +113,13 @@ router.post('/',passport.authenticate('jwt',{session:false}),(req, res)=>{
    } 
 
 
-    // get fields 
+    // Get fields 
     const profileFields = {}; 
     profileFields.user = req.user.id;
     if(req.body.handle)         profileFields.handle = req.body.handle;
     if(req.body.company)        profileFields.company = req.body.company;
+    if(req.body.website)        profileFields.website = req.body.website;
+
     if(req.body.location)       profileFields.location = req.body.location;
     if(req.body.bio)            profileFields.bio = req.body.bio;
     if(req.body.status)         profileFields.status = req.body.status;
@@ -138,8 +140,10 @@ router.post('/',passport.authenticate('jwt',{session:false}),(req, res)=>{
         .then(profile =>{
             if(profile){
                 //update
-                Profile.findOneAndUpdate({user:req.body.id},{$set:profileFields }, {new:true})
+                Profile.findOneAndUpdate({user:req.user.id},{$set:profileFields }, {new:true})
                 .then(profile => res.json(profile));
+                
+                
             }else{
                 //create
                 
@@ -154,8 +158,8 @@ router.post('/',passport.authenticate('jwt',{session:false}),(req, res)=>{
                     new Profile(profileFields).save().then(profile => res.json(profile))
                 })
             }
-        })
-        .catch()
+        });
+      
 
 
 }); 
