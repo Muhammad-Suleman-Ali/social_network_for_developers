@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {getCurrentProfile,deleteAccount} from "../../../redux/actions/profileActions";
 import Spinner from '../common/Spinner'
 import ProfileActions from './ProfileActions';
-
+import Experience from './Experience';
 
 class Dashboard extends Component {
 
@@ -28,7 +28,8 @@ class Dashboard extends Component {
                          <p className="lead text-muted">
                           Welcome <Link to={`/profile/${profile.handle}`}> {user.name} </Link></p>
                      <ProfileActions/>
-                     {/* Todo:exp and edu */}
+                    
+                    <Experience  experience ={profile.experience} />
                      <div style={{marginBottom:'60px'}}/>
                      <div onClick={this.onDeleteClick} className='btn btn-danger'>Delete My Account </div>
                      </div>

@@ -74,4 +74,10 @@ export const clearCurrentProfile = ()=>{
         type : CLEAR_CURRENT_PROFILE
 
     }
-}
+};
+// Delete Experience 
+export const deleteExperience = (exp,history)=>dispatch=> {
+    axios.delete
+
+
+} 
