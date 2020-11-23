@@ -1,20 +1,23 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
-import { withRouter } from "react-router-dom";
 import Moment from 'react-moment';
+import { withRouter } from 'react-router-dom'
 import {deleteExperience} from '../../../redux/actions/profileActions'
 
 class Experience extends Component {
    
 
-    onDeleteClick = ()=>{
-        this.props.deleteExperience(exp,this.props.history);
+    onhandleClick = (id)=>{
+        this.props.deleteExperience(id,this.props.history);
+       // console.log(id)
+
     }
 
 
     render() {
-        const   experience = this.props.experience.map(exp => (
-            // console.log(exp);
+        const   experience = this.props.experience.map(exp =>(
+        
+           
             <tr key={exp._id}>
                 <td>{exp.company}</td>
                 <td>{exp.title}</td>
@@ -23,8 +26,12 @@ class Experience extends Component {
                     <Moment format= "YYYY-MM-DD">{exp.from}</Moment> <b>To</b> {' '}
                    { exp.to === null ?( " Now ") : ( <Moment format= "YYYY-MM-DD">{exp.to}</Moment>)}
                 </td>
-                <td><button onClick={this.onDeleteClick(exp._id)} className='btn btn-danger'>Delete</button> </td>
+                <td>
+                <button onClick ={()=>this.onhandleClick(exp._id)} className='btn btn-danger'>
+                Delete
+                </button> </td>
             </tr>
+            
         ));
 
         return (
@@ -42,7 +49,6 @@ class Experience extends Component {
                     {experience}
             </thead>
             </table> 
-                
             </div>
         )
     }

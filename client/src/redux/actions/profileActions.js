@@ -76,8 +76,15 @@ export const clearCurrentProfile = ()=>{
     }
 };
 // Delete Experience 
-export const deleteExperience = (exp,history)=>dispatch=> {
-    axios.delete
-
-
-} 
+export const deleteExperience = (id)=>dispatch =>{
+        axios.delete(`/api/profile/experience/$ {id}`)
+        .then(res =>
+            dispatch({
+                type:GET_PROFILE,
+                payload:res.data
+            }))
+        .catch(err => dispatch({
+            type:GET_ERRORS,
+            payload: err.response.data
+        }))
+};

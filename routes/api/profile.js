@@ -216,7 +216,7 @@ Profile.findOne({user:req.user.id})
         profile.save().then(profile => res.json(profile))
     })
 });
-//@route   delate /api/profile/experience/:exp_id 
+//@route   delete /api/profile/experience/:exp_id 
 //@desc    Delete experience from profile
 //@access  private
 router.delete('/experience/:exp_id', passport.authenticate('jwt',{session:false}), (req, res)=>{
