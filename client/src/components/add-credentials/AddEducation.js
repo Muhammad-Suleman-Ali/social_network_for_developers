@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {withRouter  } from "react-router-dom";
+import {withRouter,Link  } from "react-router-dom";
 import TextfieldGroup from '../layout/common/TextfieldGroup';
 import {connect } from 'react-redux';
 import {addEducation } from '../../redux/actions/profileActions';
@@ -61,6 +61,7 @@ if(nextProps.errors){
             <div className='container'>
                 <div className='row'>
                     <div className='col-md-8 m-auto'>
+                    <Link to='/dashboard' className='btn btn-info'>Go Back</Link>
                     <h1 className='display-4 text-center '>Add Education</h1>
                     <p className='lead text-center '>
                         Add your education details  

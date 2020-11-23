@@ -12,8 +12,6 @@ class Experience extends Component {
        // console.log(id)
 
     }
-
-
     render() {
         const   experience = this.props.experience.map(exp =>(
         
