@@ -16,7 +16,7 @@ class AddEducation extends Component {
         from :'',
         to:'',
         current:false,
-        descriptions:'',
+        description:'',
         errors:{},
         disabled:false
 
@@ -38,7 +38,7 @@ if(nextProps.errors){
             from :this.state.from,
             to:this.state.to,
             current:this.state.current,
-            descriptions:this.state.descriptions, 
+            description:this.state.description, 
         };
 
         this.props.addEducation(eduData,this.props.history);
@@ -118,6 +118,14 @@ if(nextProps.errors){
                                    />
                                     <label htmlFor='current' className='form-check-label'>Current Job </label>
                                </div>
+                            <TextfieldGroup
+                                    placeholder="Program Description"
+                                    name="description"
+                                    value={this.state.description}
+                                    onChange={this.onChange}
+                                    error={errors.description}
+                                    info="Tell us about the program in that you were in"
+                                    />
                                <input  type='submit' value='submit' className='btn btn-info btn-block mt-4' />
                          </form>
                      </div>
