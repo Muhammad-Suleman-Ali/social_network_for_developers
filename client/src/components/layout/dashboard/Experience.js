@@ -22,9 +22,8 @@ class Experience extends Component {
                 <td>{exp.company}</td>
                 <td>{exp.title}</td>
                 <td>
-               
-                    <Moment format= "YYYY-MM-DD">{exp.from}</Moment> <b>To</b> {' '}
-                   { exp.to === null ?( " Now ") : ( <Moment format= "YYYY-MM-DD">{exp.to}</Moment>)}
+                <Moment format= "YYYY-MM-DD">{exp.from}</Moment> <b>To</b> {' '}
+                { exp.to === null ?( " Now ") : ( <Moment format= "YYYY-MM-DD">{exp.to}</Moment>)}
                 </td>
                 <td>
                 <button onClick ={()=>this.onhandleClick(exp._id)} className='btn btn-danger'>

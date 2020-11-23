@@ -11,6 +11,12 @@ import {deleteEducation} from '../../../redux/actions/profileActions'
 class Education extends Component {
 
 
+    onhandleDelete=(id)=>{
+
+        this.props.deleteEducation(id);
+
+
+    }
 
 
     render() {
@@ -25,7 +31,7 @@ class Education extends Component {
 
             </td>
             <td> 
-            <button className='btn btn-danger' >Delete</button>
+            <button onClick={ ()=> this.onhandleDelete(edu._id)} className='btn btn-danger' >Delete</button>
             </td>
         </tr>
             
