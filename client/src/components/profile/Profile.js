@@ -17,6 +17,11 @@ import {getProfileByHandle} from '../../redux/actions/profileActions'
 
         }
     }
+    componentWillReceiveProps(nextProps){
+        if(nextProps.profile.profile===null && this.props.loading){
+            this.props.history.push('/not-found')
+        }
+    }
     render() {
         const {profile,loading } = this.props.profile;
         let profileContent;
@@ -35,7 +40,8 @@ import {getProfileByHandle} from '../../redux/actions/profileActions'
                     <ProfileHeader profile={profile}/>
                     <ProfileAbout  profile={profile}/>
                     <ProfileCreds education={profile.education} experience={profile.experience}/>
-                    <ProfileGithub/>
+                    {profile.githubusername ? (<ProfileGithub username={profile.githubusername} />) : null}
+                    
                 </div>
             )
         }
