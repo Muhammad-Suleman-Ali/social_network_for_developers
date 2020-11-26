@@ -6,7 +6,7 @@ import {deletePost,addLike,removeLike} from '../../redux/actions/postActions'
 
 
 class PostItem extends Component {
-
+  
     onDeleteClick=(id)=>{
        this.props.deletePost(id);
     }
@@ -26,7 +26,8 @@ class PostItem extends Component {
     }
 
     render() {
-        const {post,auth,showActions} = this.props;
+      
+        const {post,auth ,showActions} = this.props;
         return (
             <div className="card card-body mb-3">
             <div className="row">

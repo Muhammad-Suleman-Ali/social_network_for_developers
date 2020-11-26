@@ -27,7 +27,7 @@ import {deleteComment} from '../../redux/actions/postActions'
                   <p className="lead">{comment.text}</p>
                   {comment.user === auth.user.id ? (
                    <button className='btn btn-danger mr-1' type='button' onClick={()=> this.onDeleteClick(postId,comment._id) } >
-                       <i className=' fas fa-times'/>
+                   <i className=' fas fa-times'/>
                    </button>
                ): null}
                 </div>

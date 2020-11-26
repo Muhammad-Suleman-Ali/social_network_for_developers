@@ -58,7 +58,7 @@ class CommentForm extends Component {
                       onChange={this.onChange}
                       error={errors.text}
                   />
-                    <textarea className="form-control form-control-lg" placeholder="Create a post"></textarea>
+                    
                   </div>
                   <button type="submit" className="btn btn-dark">Submit</button>
                 </form>

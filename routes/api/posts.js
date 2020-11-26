@@ -146,18 +146,21 @@ router.post('/unlike/:id',passport.authenticate('jwt',{session:false}), (req,res
          }
          //Add to comments array 
 
-         post.comment.unshift(newComment);
+         post.comments.unshift(newComment);
          //save now 
          post.save().then(post => res.json(post)); 
      })
-     .catch(err => res.status(404).json({postnotfound:"No post found"}))
+     .catch(err =>
+        
+        res.status(404).json({postNotfound:"No post found"}))
+        console.log(req.params.id)
 });
+
 //@route Delete api/posts/comment/:id/:comment_id
 //@desc  Remove comments from post
 //@access private
-router.delete('/comment/:id/:comment_id', passport.authenticate('jwt',{session:false}), (req,res)=>{
-  
-     Post.findById(req.params.id)
+router.delete("/comment/:id/:comment_id", passport.authenticate('jwt',{session:false}), (req,res)=>{
+ Post.findById(req.params.id)
      .then(post => {
         //check if the comment is exists
         if(post.comments.filter(comment => comment._id.toString()=== req.params.comment_id).length===0){
@@ -165,12 +168,12 @@ router.delete('/comment/:id/:comment_id', passport.authenticate('jwt',{session:f
         }
         // get remove index
         const removeIndex =post.comments.map(item => item._id.toString()).indexOf(req.params.comment_id);
-        // splice comment out of array 
-        post.comment.splice(removeIndex,1);
+        // splice comment out of array
+        post.comments.splice(removeIndex,1);
         //save now
         post.save().then(post => res.json(post))
      })
-     .catch(err => res.status(404).json({postnotfound:"No post found"}))
+     .catch(err => res.status(404).json({postNotfound:"No post found for delete comment "}))
 });
 
 
