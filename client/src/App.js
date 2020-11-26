@@ -85,8 +85,8 @@ function App() {
      </Switch>
      <Switch>
      <PrivateRoute exact path='/feed' component={Posts} />
+      </Switch>
 
-     </Switch>
      <Switch>
      <PrivateRoute exact path='/post/:id' component={Post} />
 

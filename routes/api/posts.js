@@ -133,7 +133,7 @@ router.post('/unlike/:id',passport.authenticate('jwt',{session:false}), (req,res
     //check validation
     if(!isValid){
         //if any errors send 400 with errors 
-        res.status(400).json(errors);
+       return res.status(400).json(errors);
     }
     
      Post.findById(req.params.id)

@@ -78,14 +78,6 @@ import {createProfile} from '../../../redux/actions/profileActions'
                         error={errors.twitter}
                     />
                     <InputGroup 
-                        placeholder='Twitter  profile URL'
-                        name='twitter'
-                        icon='fab fa-twitter'
-                        value={this.state.twitter}
-                        onChange={this.onChange}
-                        error={errors.twitter}
-                    />
-                    <InputGroup 
                         placeholder='Facebook Page URL'
                         name='facebook'
                         icon='fab fa-facebook'

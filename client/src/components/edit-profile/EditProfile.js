@@ -115,15 +115,8 @@ import isEmpty from '../../validation/is-empty';
         if(displaySocialInputs){
             socialInputs=(
                 <div>
-                    <InputGroup 
-                        placeholder='Twitter  profile URL'
-                        name='twitter'
-                        icon='fab fa-twitter'
-                        value={this.state.twitter}
-                        onChange={this.onChange}
-                        error={errors.twitter}
-                    />
-                    <InputGroup 
+                   
+                    <InputGroup
                         placeholder='Twitter  profile URL'
                         name='twitter'
                         icon='fab fa-twitter'
