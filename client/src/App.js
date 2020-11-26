@@ -17,17 +17,18 @@ import AddEducation from './components/add-credentials/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import  Profile from './components/profile/Profile';
 import Notfound from './components/not-found/Notfound'
-
+import Posts from './components/posts/Posts'
 
 import PrivateRoute from './components/layout/common/PrivateRoute'
-
-
+import Post from './components/post/Post';
 
 
 import {BrowserRouter as Router, Route, Switch  } from "react-router-dom";
 
 import './App.css';
 import { clearCurrentProfile } from './redux/actions/profileActions';
+
+
 
 // check for token 
 
@@ -80,6 +81,14 @@ function App() {
      </Switch>
      <Switch>
      <PrivateRoute exact path='/add-education' component={AddEducation} />
+
+     </Switch>
+     <Switch>
+     <PrivateRoute exact path='/feed' component={Posts} />
+
+     </Switch>
+     <Switch>
+     <PrivateRoute exact path='/post/:id' component={Post} />
 
      </Switch>
      <Route exact path='/not-found' component={Notfound} />

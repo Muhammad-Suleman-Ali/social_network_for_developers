@@ -79,8 +79,7 @@ export const deleteAccount = ()=>dispatch =>{
         }))
         
     }
-}
-
+};
 // profile loading 
 export const setProfileLoading = ()=>{
     return {
